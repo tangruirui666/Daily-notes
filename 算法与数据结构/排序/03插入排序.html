@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 时间复杂度 O((N +1) * N /2)
+      const list = Array.from({ length: 10 }, () =>
+        Math.floor(Math.random() * 10 + 1)
+      );
+      console.log(list, "原数组");
+      let tempList = [];
+      for (item of list) {
+        let isInsert = false;
+        for (let i = 0; i < tempList.length; i++) {
+          if (item < tempList[i]) {
+            isInsert = true;
+            tempList.splice(i, 0, item);
+            break;
+          }
+        }
+        if (!isInsert) {
+          tempList.push(item);
+        }
+        console.log(tempList, "tempList+" + item);
+      }
+      console.log(tempList, "排序数组");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // list的长度为N,list的最大值为M，时间复杂度为O(N+M)
+      const list = Array.from({ length: 10 }, () =>
+        Math.floor(Math.random() * 10 + 1)
+      );
+      console.log(list, "原数组");
+      let arr = Array.from({ length: Math.max(...list) + 1 }, () => 0);
+      for (let i = 0; i < list.length; i++) {
+        arr[list[i]]++;
+        console.log(arr, "统计元素" + list[i]);
+      }
+      let list2 = [];
+      for (let j = 0; j < arr.length; j++) {
+        for (let k = 0; k < arr[j]; k++) {
+          list2.push(j);
+        }
+        // let k = 0;
+        // while (k < arr[j]) {
+        //   list2.push(j);
+        //   k++;
+        // }
+      }
+      console.log(list2, "list2");
+    </script>
+  </body>
+</html>

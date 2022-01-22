@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sortNumber(a, b) {
+        return a - b;
+      }
+
+      const list = Array.from({ length: 10 }, () =>
+        Math.floor(Math.random() * 20 + 1)
+      );
+      const list2 = Array.from({ length: 10 }, () =>
+        Math.floor(Math.random() * 20 + 1)
+      );
+      const arr = list.sort(sortNumber);
+      const arr2 = list2.sort(sortNumber);
+
+      console.log(arr, "arr");
+      console.log(arr2, "arr2");
+      let list3 = [];
+      // arr数组的下标
+      let arrIndex = 0;
+      // arr2数组下标
+      let arr2Index = 0;
+
+      // 时间复杂度O（N+M）
+
+      while (arrIndex < arr.length && arr2Index < arr2.length) {
+        if (arr[arrIndex] > arr2[arr2Index]) {
+          arr[10] > arr2[8];
+          list3.push(arr2[arr2Index]);
+          arr2Index++;
+        } else {
+          list3.push(arr[arrIndex]);
+          arrIndex++;
+        }
+        console.log(list3, "list3");
+      }
+
+      while (arrIndex < arr.length) {
+        list3.push(arr[arrIndex++]);
+        console.log(list3, "list3--");
+      }
+
+      while (arr2Index < arr2.length) {
+        list3.push(arr2[arr2Index++]);
+        console.log(list3, "list3---");
+      }
+
+      console.log(list3);
+    </script>
+  </body>
+</html>
