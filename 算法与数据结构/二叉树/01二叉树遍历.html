@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 创建一个二叉树
+      function Tree() {
+        let BiTree = function (nodeVal) {
+          this.data = nodeVal;
+          this.left = null;
+          this.right = null;
+        };
+        this.creatTree = function () {
+          let biTree = new BiTree("A");
+          biTree.left = new BiTree("B");
+          biTree.right = new BiTree("C");
+          biTree.left.left = new BiTree("D");
+          biTree.right.left = new BiTree("E");
+          biTree.right.right = new BiTree("F");
+          biTree.left.left.left = new BiTree("G");
+          biTree.left.left.right = new BiTree("H");
+          biTree.right.left.right = new BiTree("I");
+          return biTree;
+        };
+      }
+      // 前序遍历  根节点-左节点-右节点
+      function beforeTraverse(biTree) {
+        if (biTree == null) {
+          return;
+        }
+        console.log(biTree.data);
+        beforeTraverse(biTree.left);
+        beforeTraverse(biTree.right);
+      }
+      // 中序遍历  左节点-根节点-右节点
+      function middleTraverse(biTree) {
+        if (biTree == null) {
+          return;
+        }
+        beforeTraverse(biTree.left);
+        console.log(biTree.data);
+        beforeTraverse(biTree.right);
+      }
+      // 后序遍历  左节点-右节点-根节点
+      function afterTraverse(biTree) {
+        if (biTree == null) {
+          return;
+        }
+        beforeTraverse(biTree.left);
+        beforeTraverse(biTree.right);
+        console.log(biTree.data);
+      }
+      let myTree = new Tree();
+      console.log("二叉树结构");
+      console.log(myTree.creatTree());
+      console.log("前序遍历");
+      beforeTraverse(myTree.creatTree());
+      console.log("中序遍历");
+      middleTraverse(myTree.creatTree());
+      console.log("后序遍历");
+      afterTraverse(myTree.creatTree());
+    </script>
+  </body>
+</html>

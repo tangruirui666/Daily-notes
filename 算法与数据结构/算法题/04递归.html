@@ -8,17 +8,18 @@
   </head>
   <body>
     <script>
-      // 时间复杂度  O(2^n)
-      // 1 1 2 3 5 8
-      // 1 2 3 4 5 6  求第n个值
-      function fun(n) {
-        if (n <= 2) {
-          return 1;
+      // 给定一个整数n,输出从1-n的顺序数组
+      let arr = [];
+      function f(n) {
+        if (n < 1) {
+          return;
         }
-        return fun(n - 1) + fun(n - 2);
+        f(n - 1);
+        console.log(n);
+        arr.push(n);
       }
-
-      fun(3);
+      f(5);
+      console.log(arr, "arr");
     </script>
   </body>
 </html>

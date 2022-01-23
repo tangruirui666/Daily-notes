@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = [1, 3, 2, 6, 5, 7, 8, 9, 0];
+      // 上浮调整
+      function upAdust(array) {
+        console.log(array, "array");
+        let childIndex = array.length - 1; // 8  val 0
+        let parentIndex = parseInt((childIndex - 1) / 2); // 3   val 6
+        while (childIndex > 0 && array[childIndex] < array[parentIndex]) {
+          let temp = array[childIndex]; // 0
+          array[childIndex] = array[parentIndex];
+          array[parentIndex] = temp;
+          childIndex = parentIndex;
+          parentIndex = (childIndex - 1) / 2;
+          console.log(arr, "arr--");
+        }
+      }
+      upAdust(arr);
+    </script>
+  </body>
+</html>
