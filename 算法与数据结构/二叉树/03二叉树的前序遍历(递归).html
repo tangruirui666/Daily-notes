@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Tree() {
+        let BiTree = function (value) {
+          this.value = value;
+          this.left = null;
+          this.right = null;
+        };
+        this.create = function () {
+          let biTree = new BiTree("A");
+          biTree.left = new BiTree("B");
+          biTree.right = new BiTree("C");
+          biTree.left.left = new BiTree("D");
+          biTree.left.right = new BiTree("E");
+          biTree.right.left = new BiTree("F");
+          biTree.right.right = new BiTree("G");
+          return biTree;
+        };
+      }
+      // 前序遍历-递归 时间复杂度O(n)
+      function diGui(tree) {
+        console.log(tree.value);
+        if (tree.left) {
+          diGui(tree.left);
+        }
+        if (tree.right) {
+          diGui(tree.right);
+        }
+      }
+      let myTree = new Tree();
+      diGui(myTree.create());
+    </script>
+  </body>
+</html>
