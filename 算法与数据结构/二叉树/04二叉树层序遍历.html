@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 创建一个二叉树
+      function Tree() {
+        let BiTree = function (nodeVal) {
+          this.value = nodeVal;
+          this.left = null;
+          this.right = null;
+        };
+        this.createTree = function () {
+          let biTree = new BiTree("A");
+          biTree.left = new BiTree("B");
+          biTree.right = new BiTree("C");
+          return biTree;
+        };
+      }
+      function leverOrder(node) {
+        console.log(node);
+      }
+      let tree = new Tree();
+      leverOrder(tree.createTree());
+    </script>
+  </body>
+</html>
