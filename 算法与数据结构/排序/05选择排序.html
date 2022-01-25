@@ -8,12 +8,15 @@
   </head>
   <body>
     <script>
+      // 时间复杂度为 0((n^2)/2)
       const array = [8, 94, 15, 88, 55, 76, 21, 39];
+      console.log(array, "array");
       function selectSort(arr) {
         let minIndex;
+        // arr.length-1 只能遍历到倒数第二个项
         for (let i = 0; i < arr.length - 1; i++) {
-          // console.log(i, "i");
           minIndex = i;
+          // arr.lenth 可以遍历最后一个项
           for (let j = i + 1; j < arr.length; j++) {
             // 寻找数组中的最小值
             if (arr[j] < arr[minIndex]) {
@@ -21,18 +24,18 @@
               minIndex = j;
             }
           }
-          console.log(minIndex, "minIndex");
           if (minIndex !== i) {
             // 根据最小元素的下标,将其放到最小元素的首位
             let temp = arr[minIndex];
             arr[minIndex] = arr[i];
             arr[i] = temp;
           }
+          console.log(minIndex, "minIndex");
+          console.log(arr, "arr");
         }
         return arr;
       }
       let arr2 = selectSort(array);
-      console.log(arr2, "arr2");
     </script>
   </body>
 </html>
