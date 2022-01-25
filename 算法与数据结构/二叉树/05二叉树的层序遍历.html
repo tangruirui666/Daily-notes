@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 层序遍历 时间复杂度O(logn)
+      function Tree() {
+        let BiTree = function (value) {
+          this.value = value;
+          this.left = null;
+          this.right = null;
+        };
+        this.create = function () {
+          let biTree = new BiTree("A");
+          biTree.left = new BiTree("B");
+          biTree.right = new BiTree("C");
+          biTree.left.left = new BiTree("D");
+          biTree.left.right = new BiTree("E");
+          biTree.right.left = new BiTree("F");
+          biTree.right.right = new BiTree("G");
+          return biTree;
+        };
+      }
+      let arr2 = [];
+      function order(tree) {
+        let arr = [];
+        arr.push(tree);
+        while (arr.length > 0) {
+          let node = arr.shift();
+          arr2.push(node.value);
+          console.log(node, "node");
+          if (node.left) {
+            arr.push(node.left);
+          }
+          if (node.right) {
+            arr.push(node.right);
+          }
+        }
+      }
+      let tree = new Tree();
+      order(tree.create());
+      console.log(arr2, "arr2");
+    </script>
+  </body>
+</html>
