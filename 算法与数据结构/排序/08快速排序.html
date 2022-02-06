@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function quickSort(arr, startIndex, endIndex) {
+        if (startIndex >= endIndex) {
+          return;
+        }
+        // 得到基准元素的位置
+        const pivottIndex = partition(arr, startIndex, endIndex);
+        quickSort(arr, startIndex, pivottIndex - 1);
+        quickSort(arr, pivottIndex + 1, endIndex);
+      }
+      // 分治: 单边循环法
+      function partition(arr, startIndex, endIndex) {
+        let mark = startIndex;
+        let pivotVal = arr[startIndex];
+        for (let i = startIndex + 1; i < endIndex; i++) {
+          // 如果遍历的arr中的值小于基准值， 那么arr[i]和基准值交换位置，并且mark指针向右移动
+          if (arr[i] < pivotVal) {
+            mark++;
+            let p = arr[mark];
+            arr[mark] = arr[i];
+            arr[i] = p;
+          }
+        }
+        // 最后把pivotVal元素交换到mark指针所在的位置
+        arr[startIndex] = arr[mark];
+        arr[mark] = pivotVal;
+        return mark;
+      }
+      const arr = [1, 23, 34, 23, 56, 6, 47, 78, 90];
+      quickSort(arr, 0, arr.length - 1);
+      console.log(arr, "arr");
+    </script>
+  </body>
+</html>

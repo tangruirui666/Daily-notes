@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function quickSort(arr, startIndex, endIndex) {
+        // 递归循环条件，startIndex大于或者等于endIndex时
+        if (startIndex >= endIndex) {
+          return;
+        }
+        // 得到基准元素的位置
+        const pivotIndex = partition(arr, startIndex, endIndex);
+        quickSort(arr, startIndex, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, endIndex);
+      }
+      // 分治：双边循环法
+      function partition(arr, startIndex, endIndex) {
+        // 取第一个位置作为基准值
+        let pivotVal = arr[startIndex];
+        let left = startIndex;
+        let right = endIndex;
+        while (left != right) {
+          // 控制right指针比较并左移
+          while (left < right && arr[right] > pivotVal) {
+            right--;
+          }
+          // 控制left指针比较并右移
+          while (left < right && arr[left] <= pivotVal) {
+            left++;
+          }
+          // 交换left和right的值
+          if (left < right) {
+            let p = arr[left];
+            arr[left] = arr[right];
+            arr[right] = p;
+          }
+        }
+        // pivotVal和指针重合点交换
+        arr[startIndex] = arr[left];
+        arr[left] = pivotVal;
+        return left;
+      }
+      const numArr = [1, 23, 32, 36, 76, 79, 83, 85, 52];
+      quickSort(numArr, 0, numArr.length - 1);
+      console.log(numArr, "numArr");
+    </script>
+  </body>
+</html>
