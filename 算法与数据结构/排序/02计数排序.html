@@ -16,11 +16,13 @@
       let arr = Array.from({ length: Math.max(...list) + 1 }, () => 0);
       for (let i = 0; i < list.length; i++) {
         arr[list[i]]++;
-        console.log(arr, "统计元素" + list[i]);
+        // console.log(arr, "统计元素" + list[i]);
       }
+      console.log(arr, "arr");
       let list2 = [];
       for (let j = 0; j < arr.length; j++) {
         for (let k = 0; k < arr[j]; k++) {
+          // arr[j] 为出现的次数， arr[j]大于0,表示出现不止一次
           list2.push(j);
         }
         // let k = 0;
