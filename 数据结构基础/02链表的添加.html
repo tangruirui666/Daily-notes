@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 定义一个链表节点
+      class Node {
+        constructor(element) {
+          this.element = element;
+          this.next = undefined;
+        }
+      }
+      class LinkedList {
+        constructor() {
+          this.count = 0;
+          this.head = undefined;
+        }
+        // 向链表尾部添加元素
+        push(element) {
+          const node = new Node(element);
+          let current;
+          if (this.head == null) {
+            this.head = node;
+          } else {
+            current = this.head;
+            while (current.next != null) {
+              // 获取最后一项元素
+              current = current.next;
+            }
+            // 将其next赋值为新元素，建立链接
+            current.next = node;
+          }
+          this.count++;
+        }
+      }
+      const list = new LinkedList();
+      list.push(1);
+      list.push(2);
+      list.push(3);
+      console.log(list, "list");
+    </script>
+  </body>
+</html>
