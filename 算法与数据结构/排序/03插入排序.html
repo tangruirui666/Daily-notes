@@ -19,6 +19,7 @@
         for (let i = 0; i < tempList.length; i++) {
           if (item < tempList[i]) {
             isInsert = true;
+            // 添加 将item放到i的位置,直接改变templist
             tempList.splice(i, 0, item);
             break;
           }

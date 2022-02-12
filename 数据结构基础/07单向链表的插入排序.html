@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 定义一个链表节点
+      class Node {
+        constructor(element) {
+          this.element = element;
+          this.next = undefined;
+        }
+      }
+      class LinkedList {
+        constructor() {
+          this.count = 0;
+          this.head = undefined;
+        }
+        // 向链表尾部添加元素
+        push(element) {
+          const node = new Node(element);
+          let current;
+          if (this.head == null) {
+            this.head = node;
+          } else {
+            current = this.head;
+            while (current.next != null) {
+              // 获取最后一项元素
+              current = current.next;
+            }
+            // 将其next赋值为新元素，建立链接
+            current.next = node;
+          }
+          this.count++;
+        }
+        insert(element, index) {
+          if (index >= 0 && index < this.count) {
+            const node = new Node(element);
+            //从第一个位置插入
+            if (index == 0) {
+              const current = this.head;
+              node.next = current;
+              this.head = node;
+            } else {
+              const previous = this.getElementAt(index - 1);
+              const current = previous.next;
+              node.next = current;
+              previous.next = node;
+            }
+            this.count++;
+            return true;
+          }
+          return false;
+        }
+        // 循环迭代链表直到目标位置index
+        getElementAt(index) {
+          if (index >= 0 && index < this.count) {
+            let node = this.head; // 链表的第一个元素
+            for (let i = 0; i < index && node != null; i++) {
+              // node != null 确保该链表不为空链表
+              node = node.next;
+            }
+            return node;
+          }
+          return undefined;
+        }
+      }
+      const list = new LinkedList();
+      list.push(1);
+      list.push(3);
+      list.push(2);
+      list.push(7);
+      list.push(3);
+      list.push(9);
+      list.push(10);
+      list.push(8);
+      list.push(4);
+      list.push(5);
+      console.log(list, "list");
+      let tempList = new LinkedList();
+
+      let current = list.head;
+      for (let i = 0; i < list.count; i++) {
+        let isSert = false;
+        for (let j = 0, tempCurrent = tempList.head; j < tempList.count; j++) {
+          if (current.element < tempCurrent.element) {
+            isSert = true;
+            tempList.insert(current.element, j);
+            break;
+          }
+          tempCurrent = tempCurrent.next;
+        }
+        if (!isSert) {
+          tempList.push(current.element);
+        }
+        current = current.next;
+      }
+      console.log(tempList, "tempList");
+    </script>
+  </body>
+</html>
