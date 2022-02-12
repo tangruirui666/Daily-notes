@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class DoublyNode {
+        constructor(element, next, prev) {
+          this.element = element;
+          this.next = null;
+          this.prev = prev;
+        }
+      }
+      class DoubleLinkedList {
+        constructor() {
+          this.tail = undefined;
+          this.count = 0;
+          this.head = undefined;
+        }
+        push(element) {
+          const node = new DoublyNode(element);
+          if (this.count === 0) {
+            this.head = node;
+            this.tail = node;
+            this.count++;
+          } else {
+            this.tail.next = node;
+            node.prev = this.tail;
+            this.tail = node;
+            this.count++;
+          }
+        }
+        insert(element, index) {
+          const node = new DoublyNode(element);
+          // 插入到链表头部
+          if (index === 0) {
+            if (this.head == null) {
+              push(element);
+            } else {
+              this.head.prev = node;
+              node.next = this.head;
+              this.head = node;
+              this.count++;
+            }
+            // 插入到链表末尾
+          } else if (index === this.count) {
+            push(element);
+          } else {
+            let current = this.head;
+            for (let i = 1; i < index; i++) {
+              current = current.next;
+            }
+            let nextVal = current.next;
+            current.next = node;
+            node.next = nextVal;
+            nextVal.prev = node;
+            node.prev = current;
+            this.count++;
+          }
+        }
+      }
+      const doubleList = new DoubleLinkedList();
+      doubleList.push(8);
+      doubleList.push(9);
+      doubleList.push(10);
+      console.log(doubleList, "doubleList");
+      doubleList.insert(7, 0);
+      doubleList.insert(11, 3);
+    </script>
+  </body>
+</html>
