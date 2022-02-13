@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Parent(name) {
+        this.name = name;
+        this.colors = ["红", "橙", "黄"];
+      }
+      Parent.prototype.sayName = function () {
+        console.log(this.name);
+      };
+      function Child(name, age) {
+        // 继承属性
+        Parent.call(this, name);
+        this.age = age;
+      }
+      Child.prototype = new Parent();
+      Child.prototype.constructor = Parent;
+      Child.prototype.sayAge = function () {
+        console.log(this.age);
+      };
+      var instance = new Child("TANG", 25);
+      instance.colors.push("绿");
+      console.log(instance.colors);
+      instance.sayAge();
+      instance.sayName();
+
+      var instance2 = new Child("Wan", "21");
+      console.log(instance2.colors);
+      instance2.sayName();
+      instance2.sayAge();
+    </script>
+  </body>
+</html>

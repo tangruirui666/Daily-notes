@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Parent(name) {
+        this.colors = ["红", "橙", "黄"];
+        this.name = name;
+      }
+      function Child() {
+        // 继承了Parent
+        Parent.call(this, "tang");
+      }
+      var instance = new Parent();
+      instance.colors.push("绿");
+      console.log(instance.colors);
+      console.log(instance);
+      var instance2 = new Parent();
+      console.log(instance2.colors);
+    </script>
+  </body>
+</html>

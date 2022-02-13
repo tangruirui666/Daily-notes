@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Parent() {
+        // Parent的实例属性
+        this.property = true;
+      }
+      Parent.prototype.getParentVal = function () {
+        return this.property;
+      };
+      function Child() {
+        this.childProperty = false;
+      }
+      // 继承了Parent,原来存在于Parent的实例中的所有属性和方法，现在也存在于Child.prototype中
+      // Child.prototype为Parent的实例
+      Child.prototype = new Parent();
+      Child.prototype.getChilVal = function () {
+        return this.childProperty;
+      };
+      var instance = new Child();
+      // 搜索3个步骤得到值 1.搜索实例 2.搜索Child.prototype 3.搜索Parent.prototype
+      console.log(instance.getParentVal());
+    </script>
+  </body>
+</html>

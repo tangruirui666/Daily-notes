@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person() {}
+      Person.prototype.name = "tang";
+      Person.prototype.age = "24";
+      Person.prototype.sayName = function () {
+        console.log(this.name);
+      };
+      var p1 = new Person();
+      for (var prop in p1) {
+        console.log(prop, "prop");
+      }
+      console.log(Person.prototype);
+      // Object.keys方法，接收一个对象作为参数，返回一个包含所有枚举属性的字符串数组
+      console.log(Object.keys(Person.prototype));
+      // 如果你想要得到所有的实例属性，无论它是否可以枚举，则使用Object.getOwnPropertyNames
+      // constructor是不可以枚举属性
+      console.log(Object.getOwnPropertyNames(Person.prototype));
+    </script>
+  </body>
+</html>

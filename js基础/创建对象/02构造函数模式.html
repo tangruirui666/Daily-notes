@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 构造函数缺点： 每个方法都要在每个实例中重新创建一遍，以这种方式创建函数，会导致不同的作用域链和标识符解析，但创建funciton新实例的机制是相等的
+      function Person(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.sayName = function () {
+          alert(this.name);
+        };
+      }
+      const p1 = new Person("唐", 25, "女");
+      const p2 = new Person("琬", 23, "女");
+      // p1和p2分别保存着Person的一个不同的实例，这两个对象都有一个contructor(构造函数)属性，该属性指向Person
+      console.log(p1.constructor == Person);
+      // 可用instanceof 来检测对象类型
+      console.log(p1 instanceof Person);
+      console.log(p1 instanceof Object);
+      // 不同实例的同名函数是不相等的  ，而创建两个完成同样任务的funcion实例没有必要
+      console.log(p1.sayName == p2.sayName);
+    </script>
+  </body>
+</html>

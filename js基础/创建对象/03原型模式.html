@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person() {}
+      Person.prototype.name = "Tang";
+      Person.prototype.age = "25";
+      Person.prototype.sayName = function () {
+        console.log(this.name);
+      };
+      var p1 = new Person();
+      var p2 = new Person();
+      p1.sayName();
+      // 让所有对象实例共享它所包含的属性和方法，不必在构造函数中定义对象实例的信息，而是可以将这些信息直接添加到原型对象中
+      console.log(p1.sayName == p2.sayName); // true
+      console.log(p1.name); // Tang --- 来自原型
+      p1.name = "Wan";
+      console.log(p1.name); // Wan  ---来自实例
+      // 使用hasOwnProperty可以检测一个属性是否存在实例中，只有给定属性存在实例中时，才会返回true
+      // hasOwnProperty不能判断属性shi f
+      console.log(p1.hasOwnProperty("name")); //true
+      console.log(p1.hasOwnProperty("age")); // false
+      // 判断属性是否存在原型中，需要配合in操作符
+      // in操作符 无论属性存在实例中，还是原型中，都会返回true
+      console.log("age" in p1); // true
+      // hasOwnProperty和in操作符一起使用，可以判断属性是否存在原型中
+      function hasPrototypeProperty(object, name) {
+        return !object.hasOwnProperty(name) && name in object;
+      }
+    </script>
+  </body>
+</html>
